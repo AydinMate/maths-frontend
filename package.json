@@ -4,12 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "pnpm run watch",
+    "start": "concurrently \"pnpm run watch\" \"pnpm run serve\"",
     "build": "tsc",
     "watch": "tsc -w",
     "serve": "http-server -o -c-1"
-  }
-  ,
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

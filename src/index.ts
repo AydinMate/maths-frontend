@@ -1,8 +1,7 @@
-const problem = document.getElementsByClassName('problem')[0];
+import { ArithmeticQuestion } from './types';
 
-problem.addEventListener('click', () => {
-  console.log('clicked cunt');
-});
+var problem = document.querySelector('.problem');
+var data: ArithmeticQuestion;
 
 async function fetchData() {
   try {
@@ -12,15 +11,15 @@ async function fetchData() {
       throw new Error('Network response was not ok');
     }
 
-    const data = await response.json();
-    console.log(data);
+    data = await response.json();
+
+    problem &&
+      (await (problem.innerHTML = `${data.firstNumber} ${data.operation} ${data.secondNumber}`));
   } catch (error) {
     console.error('Fetch error:', error);
   }
 }
 
-
 fetchData();
-
 
 // use pnpm start

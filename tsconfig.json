@@ -1,18 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es6" /* Set the JavaScript language version for emitted JavaScript. */,
-    "module": "commonjs" /* Specify what module code is generated. */,
-    "outDir": "./dist" /* Specify the output directory for compiled JavaScript files. */,
-    "sourceMap": true /* Generate source map files for debugging. */,
-    "strict": true /* Enable all strict type-checking options. */,
-    "noImplicitAny": true /* Enable error reporting for expressions and declarations with an implied 'any' type. */,
-    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. */,
-    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */
+    "target": "ES6",
+    "module": "ES6",
+    "outDir": "./dist",
+    "sourceMap": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "include": [
-    "./src/**/*.ts" // adjust the path to your TypeScript source files
-  ],
-  "exclude": [
-    "node_modules" /* Exclude the 'node_modules' directory from TypeScript compilation. */
-  ]
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules"]
 }
