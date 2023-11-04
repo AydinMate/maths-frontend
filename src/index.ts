@@ -1,7 +1,7 @@
 const problem = document.getElementsByClassName('problem')[0];
 
 problem.addEventListener('click', () => {
-  console.log('clicked');
+  console.log('clicked cunt');
 });
 
 async function fetchData() {
@@ -21,3 +21,6 @@ async function fetchData() {
 
 
 fetchData();
+
+
+// use pnpm start

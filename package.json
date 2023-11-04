@@ -4,12 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "start": "pnpm run watch",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "serve": "http-server -o -c-1"
+  }
+  ,
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
+    "http-server": "^14.1.1",
     "typescript": "^5.2.2"
   }
 }
