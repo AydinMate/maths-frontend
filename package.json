@@ -8,7 +8,7 @@
     "build": "tsc",
     "watch": "tsc -w",
     "serve": "http-server -o -c-1",
-    "sass": "sass scss/index.scss css/index.css -w"
+    "sass": "sass scss/index.scss dist/index.css -w"
   },
   "keywords": [],
   "author": "",
