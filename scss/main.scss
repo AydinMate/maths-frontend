@@ -1,0 +1,44 @@
+body {
+    font-family: 'Geist-Black', Arial, Helvetica, sans-serif;
+    background-color: black;
+    color: white;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .question {
+    font-size: 3rem;
+    display: none;
+    text-align: center;
+  }
+  
+  .problem {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .option {
+    padding: 0;
+    margin: 1rem 1rem;
+    border: none;
+    background: none;
+    color: white;
+    width: auto;
+    font-size: 4rem;
+    font-weight: bold;
+  }

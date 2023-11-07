@@ -4,16 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"pnpm run watch\" \"pnpm run serve\"",
+    "start": "concurrently \"pnpm run watch\" \"pnpm run serve\" \"pnpm run sass\"",
     "build": "tsc",
     "watch": "tsc -w",
-    "serve": "http-server -o -c-1"
+    "serve": "http-server -o -c-1",
+    "sass": "sass scss/index.scss css/index.css -w"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "http-server": "^14.1.1",
+    "sass": "^1.69.5",
     "typescript": "^5.2.2"
   }
 }
