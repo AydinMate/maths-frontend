@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"pnpm run watch\" \"pnpm run serve\" \"pnpm run sass\"",
-    "build": "tsc",
+    "start": "concurrently \"pnpm run watch\" \"pnpm run serve\" \"pnpm run sass-watch\"",
+    "build": "concurrently \"tsc\" \"pnpm run sass\"",
     "watch": "tsc -w",
     "serve": "http-server -o -c-1",
-    "sass": "sass scss/index.scss dist/index.css -w"
+    "sass": "sass scss/index.scss dist/index.css",
+    "sass-watch": "sass scss/index.scss dist/index.css -w"
   },
   "keywords": [],
   "author": "",
@@ -18,5 +19,8 @@
     "http-server": "^14.1.1",
     "sass": "^1.69.5",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
   }
 }

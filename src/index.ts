@@ -1,5 +1,6 @@
 import { ArithmeticQuestion } from './types';
 
+
 let loader = document.querySelector('.loader') as HTMLElement;
 
 let questionElement = document.querySelector('.question') as HTMLElement;
@@ -13,6 +14,26 @@ let data: ArithmeticQuestion = {
   answer: 0,
   options: [],
 };
+
+function checkOption (option: number, answer: number) {
+  if (option === answer) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+
+
+function setData(showData: boolean) {
+  if (showData) {
+    questionElement.style.display = 'block';
+    loader.style.display = 'none';
+  } else {
+    questionElement.style.display = 'none';
+    loader.style.display = 'block';
+  }
+}
 
 async function fetchData() {
   try {
@@ -31,6 +52,11 @@ async function fetchData() {
         optionElement.className = 'option';
         optionElement.textContent = optionValue.toString();
         optionsElement.appendChild(optionElement);
+
+        optionElement.addEventListener('click', () => {
+          const res = checkOption(optionValue, data.answer);
+          console.log(res);
+        });
       });
 
       setData(true);
@@ -40,16 +66,4 @@ async function fetchData() {
   }
 }
 
-function setData(showData: boolean) {
-  if (showData) {
-    questionElement.style.display = 'block';
-    loader.style.display = 'none';
-  } else {
-    questionElement.style.display = 'none';
-    loader.style.display = 'block';
-  }
-}
-
 fetchData();
-
-// use pnpm start
