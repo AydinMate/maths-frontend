@@ -1,6 +1,5 @@
 import { ArithmeticQuestion } from './types';
 
-
 let loader = document.querySelector('.loader') as HTMLElement;
 
 let questionElement = document.querySelector('.question') as HTMLElement;
