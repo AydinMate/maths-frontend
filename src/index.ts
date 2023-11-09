@@ -15,13 +15,6 @@ let data: ArithmeticQuestion = {
   options: [],
 };
 
-function checkOption(option: number, answer: number) {
-  if (option === answer) {
-    return true;
-  } else {
-    return false;
-  }
-}
 
 function setData(showData: boolean) {
   if (showData) {
