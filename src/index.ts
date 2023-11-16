@@ -21,9 +21,14 @@ let data: ArithmeticQuestion = {
 };
 
 let settings: Setting = {
-  multiplication: false,
-  division: true,
+  multiplication: true,
+  division: false,
   negative: false,
+};
+
+let disabled = {
+  multiplication: false,
+  division: false,
 };
 
 let urlString: string = getUrlString(settings);
@@ -46,6 +51,32 @@ function setSettingsSwitches() {
   });
 }
 
+function disableSwitches(settings: Setting) {
+  let multiplicationSetting;
+  let divisionSetting;
+
+  allSettings.forEach((setting) => {
+    if (setting.id === 'multiplication') {
+      multiplicationSetting = setting;
+    }
+  });
+
+  allSettings.forEach((setting) => {
+    if (setting.id === 'division') {
+      divisionSetting = setting;
+    }
+  });
+  if (settings.multiplication === false) {
+    divisionSetting!.disabled = true;
+  } else {
+    divisionSetting!.disabled = false;
+  }
+  if (settings.division === false) {
+    multiplicationSetting!.disabled = true;
+  } else {
+    multiplicationSetting!.disabled = false;
+  }
+}
 
 function setData(showData: boolean) {
   if (showData) {
@@ -90,6 +121,7 @@ function addEventListeners() {
 
       (settings as any)[type] = checked;
       urlString = getUrlString(settings);
+      disableSwitches(settings);
       fetchData(urlString);
     });
   });
@@ -126,6 +158,7 @@ async function fetchData(urlString: string) {
   }
 }
 
+disableSwitches(settings);
 addEventListeners();
 setSettingsSwitches();
 fetchData(urlString);
