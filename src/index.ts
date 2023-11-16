@@ -1,12 +1,16 @@
-import { ArithmeticQuestion } from './types';
+import { ArithmeticQuestion, Setting } from './types';
 import './styles/index.scss';
+import { getUrlString } from './functions';
 
 let loader = document.querySelector('.loader') as HTMLElement;
 
 let backgroundElement = document.querySelector('.container') as HTMLElement;
 let questionElement = document.querySelector('.question') as HTMLElement;
 let problemElement = document.querySelector('.problem') as HTMLElement;
-let allOptions = document.querySelectorAll('.option');
+let allOptions: NodeListOf<HTMLButtonElement> =
+  document.querySelectorAll('.option');
+let allSettings: NodeListOf<HTMLInputElement> =
+  document.querySelectorAll('.switch-input');
 
 let data: ArithmeticQuestion = {
   operation: '',
@@ -15,6 +19,33 @@ let data: ArithmeticQuestion = {
   answer: 0,
   options: [],
 };
+
+let settings: Setting = {
+  multiplication: false,
+  division: true,
+  negative: false,
+};
+
+let urlString: string = getUrlString(settings);
+
+function setSettingsSwitches() {
+  const trueValues: string[] = [];
+
+  for (const key in settings) {
+    if (settings[key]) {
+      trueValues.push(key);
+    }
+  }
+
+  allSettings.forEach((setting) => {
+    const settingId = setting.id;
+
+    const isChecked = trueValues.includes(settingId);
+
+    setting.checked = isChecked;
+  });
+}
+
 
 function setData(showData: boolean) {
   if (showData) {
@@ -49,7 +80,17 @@ function addEventListeners() {
         checkAnswer(optionValue);
       }
 
-      fetchData();
+      fetchData(urlString);
+    });
+  });
+  allSettings.forEach((setting) => {
+    setting.addEventListener('change', () => {
+      const type = setting.id;
+      const checked = setting.checked;
+
+      (settings as any)[type] = checked;
+      urlString = getUrlString(settings);
+      fetchData(urlString);
     });
   });
 }
@@ -63,9 +104,11 @@ function updateOptions() {
   });
 }
 
-async function fetchData() {
+async function fetchData(urlString: string) {
   try {
-    const response = await fetch('http://localhost:5288/get-arithmetic-mn');
+    const response = await fetch(
+      `http://localhost:5288/get-arithmetic-${urlString}`
+    );
 
     if (!response.ok) {
       setData(false);
@@ -84,4 +127,5 @@ async function fetchData() {
 }
 
 addEventListeners();
-fetchData();
+setSettingsSwitches();
+fetchData(urlString);

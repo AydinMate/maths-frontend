@@ -53,7 +53,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Webpack app",
+      title: "Times Tables",
       filename: "index.html",
       template: "src/index.html",
     }),

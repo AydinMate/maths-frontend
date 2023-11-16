@@ -5,3 +5,10 @@ export interface ArithmeticQuestion {
   answer: number;
   options: number[];
 }
+
+export interface Setting {
+  multiplication: boolean;
+  division: boolean;
+  negative: boolean;
+  [key: string]: boolean;
+}
