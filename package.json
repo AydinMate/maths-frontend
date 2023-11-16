@@ -4,20 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"pnpm run watch\" \"pnpm run serve\" \"pnpm run sass-watch\"",
-    "build": "concurrently \"tsc\" \"pnpm run sass\"",
-    "watch": "tsc -w",
-    "serve": "http-server -o -c-1",
-    "sass": "sass scss/index.scss dist/index.css",
-    "sass-watch": "sass scss/index.scss dist/index.css -w"
+    "build": "webpack",
+    "dev": "webpack serve"
   },
   "keywords": [],
-  "author": "",
+  "author": "Aydin Elhan",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^8.2.2",
-    "http-server": "^14.1.1",
+    "@babel/core": "^7.23.3",
+    "@babel/preset-env": "^7.23.3",
+    "babel-loader": "^9.1.3",
+    "css-loader": "^6.8.1",
+    "html-webpack-plugin": "^5.5.3",
     "sass": "^1.69.5",
-    "typescript": "^5.2.2"
+    "sass-loader": "^13.3.2",
+    "style-loader": "^3.3.3",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.2.2",
+    "webpack": "^5.89.0",
+    "webpack-bundle-analyzer": "^4.9.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   }
 }
